@@ -10,7 +10,7 @@ Version:        1.0.14
 # 60.X where X is an increasing int. 60 for rhel-6. We use
 # 70.X for rhel-7. For some reason we cannot rely on the
 # dist tag.
-Release:        60.5%{?dist}
+Release:        60.6%{?dist}
 Summary:        Java chart library
 
 Group:          Development/Libraries
@@ -23,9 +23,6 @@ BuildRequires:  %{?scl_prefix_java_common}mvn(javax.servlet:servlet-api)
 BuildRequires:  %{?scl_prefix}jcommon >= 1.0.17
 BuildRequires:  %{?scl_prefix_java_common}ant
 BuildRequires:  %{?scl_prefix_java_common}javapackages-local
-%if 0%{?fedora}
-BuildRequires:  eclipse-swt
-%endif
 # Required for converting jars to OSGi bundles
 BuildRequires:  %{?scl_prefix_maven}aqute-bnd
 Requires:       %{?scl_prefix}jcommon >= 1.0.17
@@ -80,15 +77,16 @@ mv lib/%{pkg_name}-%{version}.bar %{pkg_name}-%{version}.jar
 %files -f .mfiles
 %doc ChangeLog licence-LGPL.txt NEWS README.txt
 
-%if 0%{?fedora}
-%files swt
-%{_javadir}/%{name}/swtgraphics2d*.jar
-%{_javadir}/%{name}/%{name}-swt*.jar
-%endif
-
 %files javadoc -f .mfiles-javadoc
 
 %changelog
+* Wed Jan 27 2016 Severin Gehwolf <sgehwolf@redhat.com> - 1.0.14-60.6
+- Rebuild for RHSCL 2.2.
+
+* Tue Jan 20 2015 Severin Gehwolf <sgehwolf@redhat.com> - 1.0.14-60.5
+- Use java common's libs as BR.
+- Use java common's requires/provides generators.
+
 * Wed Dec 17 2014 Severin Gehwolf <sgehwolf@redhat.com> - 1.0.14-60.4
 - Don't hard-code maven collection name.
 
