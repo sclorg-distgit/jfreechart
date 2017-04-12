@@ -15,7 +15,7 @@ Version:        1.0.14
 # 60.X where X is an increasing int. 60 for rhel-6. We use
 # 70.X for rhel-7. For some reason we cannot rely on the
 # dist tag.
-Release:        70.5%{?dist}
+Release:        70.6%{?dist}
 Summary:        Java chart library
 
 Group:          Development/Libraries
@@ -115,6 +115,9 @@ mv lib/%{pkg_name}-%{version}.bar %{pkg_name}-%{version}.jar
 %files javadoc -f .mfiles-javadoc
 
 %changelog
+* Tue Jan 17 2017 Jie Kang <jkang@redhat.com> 1.0.14-70.6
+- Rebuild for RHSCL 2.4.
+
 * Wed Jan 27 2016 Severin Gehwolf <sgehwolf@redhat.com> 1.0.14-70.5
 - Rebuild for RHSCL 2.2.
 
